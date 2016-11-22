@@ -1,0 +1,18 @@
+{
+  "name": "utils-ahg-js",
+  "description": "Utilities javascript collection used in multiple projects.",
+  "main": "index.js",
+  "authors": [
+    "Fernando Dettoni <dettoni@ahgora.com.br>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

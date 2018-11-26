@@ -64,7 +64,11 @@ exports.date_ymd = function(dt) {
     return res ? res : exports.date_ymd_z(exports.today());
 };
 
-exports.date_dmy_z = function(dt) {
+exports.date_dmy_z = function(dt, format) {
+    //Format supports only DD/MM/YYYY MM/DD/YYYY and YYYY-MM-DD
+    if(!format) {
+        format = 'DD/MM/YYYY';
+    }
     if (typeof dt === 'string') {
         var dtsep = dt.match(/[0-9]+/g);
         if (dtsep && dtsep.length === 3) {
@@ -74,7 +78,14 @@ exports.date_dmy_z = function(dt) {
                 dtsep[1] = exports.str_pad(dtsep[1], 2);
                 dtsep[2] = exports.str_pad(dtsep[2], 4);
             }
-            return dtsep.join('/');
+            if(format == 'MM/DD/YYYY') {
+                return dtsep[1]+'/'+dtsep[0]+'/'+dtsep[2];
+            } else if(format == 'YYYY-MM-DD') {
+                dtsep.reverse();
+                return dtsep.join('-');
+            } else {
+                return dtsep.join('/');
+            }
         }
     }
 };
